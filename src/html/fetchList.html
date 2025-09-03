@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fetch {
+            cursor: pointer;
+        }
+
+        .fetch:hover {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="fetchList"></div>
+    <script>
+
+        const fetchListJSON = JSON.parse('{{fetchList}}');
+        console.log(fetchListJSON);
+
+        fetchListJSON.fetchList.forEach(element => {
+            const div = document.createElement("div");
+            div.innerText = element;
+            div.classList.add("fetch");
+            document.getElementById("fetchList").appendChild(div);
+        });
+
+    </script>
+</body>
+</html>
