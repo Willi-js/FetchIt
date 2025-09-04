@@ -5,27 +5,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+
+        @import "https://www.nerdfonts.com/assets/css/webfont.css";
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            font-size: var(--vscode-font-size);
+            font-family: var(--vscode-font-family);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            border-radius: 10px;
+            color: var(--vscode-editor-foreground);
+            border: solid 1px var(--vscode-editor-foreground);
+            gap: 10px;
+        }
+
         .fetch {
-            cursor: pointer;
+            background: var(--vscode-toolbar-hoverBackground);
+            padding: 5px;
+            border-radius: 5px;
+            min-width: 250px;
         }
 
         .fetch:hover {
-            background-color: lightblue;
+            background: var(--vscode-button-background);
         }
+
+        .icon {
+            margin-right: 5px;
+        }
+
+        .active {
+            background: var(--vscode-button-background);
+        }
+
     </style>
 </head>
 <body>
-    <div id="fetchList"></div>
+    <div class="container">
+
+    </div>
+
     <script>
+
+        const lang_map = {
+            ts: "nf-md-language_typescript",
+            js: "nf-md-language_javascript",
+            py: "nf-md-language_python",
+            html: "nf-md-language_html5",
+            json: "nf-md-code_json",
+            css: "nf-md-language_css3",
+            c: 'nf-md-language_c',
+            cpp: "nf-md-language_cpp",
+            go: "nf-md-language_go",
+            rust: "nf-md-language_rust",
+            java: "nf-md-language_java",
+        }
+
+        const color_map = {
+            ts: "#2b7489",
+            js: "#f1e05a",
+            py: "#3572A5",
+            html: "#e34c26",
+            json: "#cbcb41",
+            css: "#563d7c",
+            c: '#555',
+            cpp: "#f34b7d",
+            go: "#00ADD8",
+            rust: "#dea584",
+            java: "#b07219",
+        }
+
+        const vscode = acquireVsCodeApi();
+
+        const container = document.querySelector(".container");
 
         const fetchListJSON = JSON.parse('{{fetchList}}');
         console.log(fetchListJSON);
 
+        let counter = 0;
+
         fetchListJSON.fetchList.forEach(element => {
+
             const div = document.createElement("div");
-            div.innerText = element;
             div.classList.add("fetch");
-            document.getElementById("fetchList").appendChild(div);
+            div.id = counter;
+            div.setAttribute("data-path", element);
+
+            if(counter === '{{currentlySelected}}') {
+                div.classList.add("active");
+            }
+
+            counter++;
+
+            const text = document.createElement("span");
+            text.innerText = element.split("/").pop();
+
+            const icon = document.createElement("i");
+            icon.classList.add("nf", lang_map[element.split(".").pop()] ? lang_map[element.split(".").pop()] : "nf-md-file_code", "icon");
+            icon.style.color = color_map[element.split(".").pop()] ? color_map[element.split(".").pop()] : "#555";
+
+            div.appendChild(icon);
+            div.appendChild(text);
+
+            div.onclick = () => {
+                vscode.postMessage({
+                    command: "openFile",
+                    path: element
+                });
+            }
+            
+            container.appendChild(div);
+        });
+
+        let currentlySelected = '{{currentlySelected}}';
+
+        document.addEventListener("keydown", (e) => {
+            if(e.key === "ArrowUp") {
+                if(currentlySelected > 0) {
+                    document.getElementById(currentlySelected).classList.remove("active");
+                    currentlySelected--;
+                    document.getElementById(currentlySelected).classList.add("active");
+                }
+            } else if(e.key === "ArrowDown") {
+                if(currentlySelected < counter - 1) {
+                    document.getElementById(currentlySelected).classList.remove("active");
+                    currentlySelected++;
+                    document.getElementById(currentlySelected).classList.add("active");
+                }
+            } else if(e.key === "Enter") {
+                vscode.postMessage({
+                    command: "openFile",
+                    path: document.getElementById(currentlySelected).getAttribute("data-path")
+                });
+            }
         });
 
     </script>

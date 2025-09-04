@@ -20,8 +20,77 @@
       {
         "command": "fetchit.addfetch",
         "title": "Add Fetch"
+      },
+      {
+        "command": "fetchit.selectnext",
+        "title": "Select Next"
+      },
+      {
+        "command": "fetchit.selectprevious",
+        "title": "Select Previous"
+      },
+      {
+        "command": "fetchit.clearall",
+        "title": "Clear All"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "fetchit.fetchlist",
+        "key": "alt+e",
+        "mac": "alt+e"
+      },
+      {
+        "command": "fetchit.addfetch",
+        "key": "alt+a",
+        "mac": "alt+a"
+      },
+      {
+        "command": "fetchit.selectnext",
+        "key": "alt+]",
+        "mac": "altt+]"
+      },
+      {
+        "command": "fetchit.selectprevious",
+        "key": "alt+[",
+        "mac": "altt+["
+      },
+      {
+        "command": "fetchit.clearall",
+        "key": "alt+r",
+        "mac": "alt+r"
       }
     ]
+  },
+  "configuration": {
+    "title": "FetchIt Configuration",
+    "properties": {
+      "fetchit.keybindings.fetchlist": {
+        "type": "string",
+        "default": "alt+e",
+        "description": "Keybinding for 'Fetch List' command."
+      },
+      "fetchit.keybindings.addfetch": {
+        "type": "string",
+        "default": "alt+a",
+        "description": "Keybinding for 'Add Fetch' command."
+      },
+      "fetchit.keybindings.selectnext": {
+        "type": "string",
+        "default": "alt+]",
+        "description": "Keybinding for 'Select Next' command."
+      },
+      "fetchit.keybindings.selectprevious": {
+        "type": "string",
+        "default": "alt+[",
+        "description": "Keybinding for 'Select Previous' command."
+      },
+      "fetchit.keybindings.clearall": {
+        "type": "string",
+        "default": "alt+r",
+        "description": "Keybinding for 'Clear All' command."
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -32,14 +101,17 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.103.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
+    "@types/vscode": "^1.103.0",
     "@typescript-eslint/eslint-plugin": "^8.39.0",
     "@typescript-eslint/parser": "^8.39.0",
-    "eslint": "^9.32.0",
-    "typescript": "^5.9.2",
     "@vscode/test-cli": "^0.0.11",
-    "@vscode/test-electron": "^2.5.2"
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.32.0",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@vscode/vsce": "^3.6.0"
   }
 }
