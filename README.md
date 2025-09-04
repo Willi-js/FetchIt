@@ -8,15 +8,21 @@ An extension for quickly moving trough your active files. Inspired by
 ## Features
 
 > Add files to your active list 
+
 > Move back and forth trough the files
+
 > Only use your keyboard to navigate your files
 
 ## Keybinds
 
 > Adding a file to the active list - Alt+a
+
 > Open the active file list - Alt+e
+
 > Go to the next file - Alt+]
+
 > Go to the previouse file - Alt+[
+
 > Remove all files from active list - Alt+r
 
 **Enjoy!**
