@@ -1,6 +1,10 @@
 {
   "name": "fetchit",
   "displayName": "FetchIt",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Willi-js/FetchIt"
+  },
   "description": "Navigate your files faster with out lifting your hands from your keyboard using FetchIt!!!",
   "version": "0.0.1",
   "engines": {
