@@ -30,20 +30,6 @@ function reasure(context: vscode.ExtensionContext): SaveData{
 }
 
 export function activate(context: vscode.ExtensionContext) {
-
-	function getKeybindings() {
-    	const config = vscode.workspace.getConfiguration('fetchit.keybindings');
-
-  	  	return {
-  	    	fetchlist: config.get<string>('fetchlist'),
-  	    	addfetch: config.get<string>('addfetch'),
-  	    	selectnext: config.get<string>('selectnext'),
-  	    	selectprevious: config.get<string>('selectprevious'),
-  	    	clearall: config.get<string>('clearall')
-  	  	};
-  	}
-
-  	const currentKeybindings = getKeybindings();
 	
 	let data = reasure(context);
 
