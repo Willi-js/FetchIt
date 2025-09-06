@@ -5,6 +5,8 @@
 An extension for quickly moving trough your active files. Inspired by
 [Harpoon by ThePrimeagen](https://github.com/ThePrimeagen/harpoon)
 
+(This extension is mostly for my self xD, you should probably find better alternatives)
+
 ## Features
 
 - Add files to your active list 
