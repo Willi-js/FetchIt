@@ -19,9 +19,9 @@ An extension for quickly moving trough your active files. Inspired by
 
 - Open the active file list - Alt+e
 
-- Go to the next file - Alt+]
+- Go to the next file - ctrl+] (cmd+])
 
-- Go to the previouse file - Alt+[
+- Go to the previouse file - ctrl+[ (cmd+])
 
 - Remove all files from active list - Alt+r
 
