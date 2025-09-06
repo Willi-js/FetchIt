@@ -51,13 +51,13 @@
       },
       {
         "command": "fetchit.selectnext",
-        "key": "alt+]",
-        "mac": "altt+]"
+        "key": "ctrl+]",
+        "mac": "cmd+]"
       },
       {
         "command": "fetchit.selectprevious",
-        "key": "alt+[",
-        "mac": "altt+["
+        "key": "ctrl+[",
+        "mac": "cmd+["
       },
       {
         "command": "fetchit.clearall",
@@ -65,36 +65,6 @@
         "mac": "alt+r"
       }
     ]
-  },
-  "configuration": {
-    "title": "FetchIt Configuration",
-    "properties": {
-      "fetchit.keybindings.fetchlist": {
-        "type": "string",
-        "default": "alt+e",
-        "description": "Keybinding for 'Fetch List' command."
-      },
-      "fetchit.keybindings.addfetch": {
-        "type": "string",
-        "default": "alt+a",
-        "description": "Keybinding for 'Add Fetch' command."
-      },
-      "fetchit.keybindings.selectnext": {
-        "type": "string",
-        "default": "alt+]",
-        "description": "Keybinding for 'Select Next' command."
-      },
-      "fetchit.keybindings.selectprevious": {
-        "type": "string",
-        "default": "alt+[",
-        "description": "Keybinding for 'Select Previous' command."
-      },
-      "fetchit.keybindings.clearall": {
-        "type": "string",
-        "default": "alt+r",
-        "description": "Keybinding for 'Clear All' command."
-      }
-    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
