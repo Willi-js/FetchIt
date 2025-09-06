@@ -1,6 +1,7 @@
 {
-  "name": "fetchit",
-  "displayName": "FetchIt",
+  "name": "fetch-it",
+  "displayName": "Fetch It",
+  "publisher": "Willi-js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Willi-js/FetchIt"
